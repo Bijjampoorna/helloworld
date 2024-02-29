@@ -17,6 +17,16 @@ pipeline{
                 sh 'cd helloworld && mvn clean install'
             }
         }
+        stage('Static Code Analysis'){
+            environment{
+            SONAR_URL="http://65.0.131.171:9000"
+            }
+            steps{
+              withCrendentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]){
+                sh 'cd helloworld && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'                  
+              }
+            }  
+        }
 
             
   }
