@@ -15,6 +15,7 @@ pipeline{
             steps{
                 sh 'cd helloworld && mvn clean install'
             }
+        }
 
             
   }
