@@ -11,6 +11,7 @@ pipeline{
         sh 'echo passed'
         
       }
+         }    
         stage('Build And Install'){
             steps{
                 sh 'cd helloworld && mvn clean install'
