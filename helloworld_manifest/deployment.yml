@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: helloworld
-        image: bijjampoorna/ultimate-cicd:replaceImageTag
+        image: bijjampoorna/ultimate-cicd:13
         ports:
         - containerPort: 8080
