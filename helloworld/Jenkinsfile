@@ -14,7 +14,7 @@ pipeline{
          }    
         stage('Build And Install'){
             steps{
-                sh 'cd helloworld && mvn clean install'
+                sh 'cd helloworld && mvn clean package'
             }
         }
         stage('Static Code Analysis'){
