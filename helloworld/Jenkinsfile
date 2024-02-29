@@ -50,13 +50,13 @@ pipeline{
             steps{
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]){
                     sh '''
-                        git config user.email "bijjampoorna@gmail.com"
-                        got config user.name "Bijjampoorna"
-                      
-                        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" helloworld_manifest/deployment.yml
-                        git add helloworld_manifest/deployment.yml
-                        git commit -m "update deployment with $BUILD_NUMBER"
-                        git push https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
+                       git config user.email "bijjampoorna@gmail.com"
+                    git config user.name "Bijjampoorna"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" helloworld_manifest/deployment.yml
+                    git add helloworld_manifest/deployment.yml
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
                     '''
                 }
             }
